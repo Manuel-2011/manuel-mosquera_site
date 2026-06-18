@@ -47,7 +47,7 @@ export const profile = {
     },
     {
       label: 'Google Scholar',
-      href: 'https://scholar.google.com/citations?user=manuel-mosquera',
+      href: 'https://scholar.google.com/citations?hl=en&user=Gxg2croAAAAJ',
     },
   ] satisfies Link[],
 };
@@ -63,8 +63,7 @@ export const navItems = [
 export const research = {
   statement: [
     'I am a third-year PhD student at Universidad de los Andes, working on latent world models. My research is motivated by the hypothesis that predictive latent representations can provide a scalable foundation for reasoning, planning, and generalization in embodied agents.',
-    'Over the past six months, I have been developing a hierarchical latent world model that learns semantic representations for long-horizon planning and hierarchical decision-making. I am particularly interested in how self-supervised predictive objectives can yield structured latent spaces that support efficient planning without relying on hand-engineered state abstractions.',
-    'More broadly, my research interests include self-supervised representation learning, predictive latent world models, and energy-based models for efficient planning in high-dimensional spaces. I have extensive experience implementing and training deep learning systems in PyTorch, including transformers, large language models, and modern self-supervised world models such as V-JEPA 2.',
+    'My research interests include self-supervised representation learning, predictive latent world models, and energy-based models for efficient planning in high-dimensional spaces. I have extensive experience implementing and training deep learning systems in PyTorch, including transformers, large language models, and modern self-supervised world models such as V-JEPA 2.',
   ],
   interests: [
     'Self-supervised representation learning',
@@ -77,11 +76,12 @@ export const research = {
   skills: [
     'PyTorch',
     'Transformers',
-    'Large language models',
     'V-JEPA 2',
+    'Self-supervised learning',
+    'Energy-based models',
     'Reinforcement learning',
     'GRPO',
-    'Multi-agent systems',
+    'Large language models',
   ],
 };
 
