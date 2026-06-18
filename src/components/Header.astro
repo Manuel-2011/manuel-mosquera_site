@@ -1,0 +1,24 @@
+---
+import { navItems, profile } from '../data/site';
+---
+
+<header class="sticky top-0 z-50 border-b border-border/80 bg-background/95 backdrop-blur-sm">
+  <div class="mx-auto flex max-w-wide items-center justify-between gap-4 px-6 py-4">
+    <a href="#" class="font-serif text-lg font-semibold text-foreground no-underline hover:text-accent">
+      {profile.shortName}
+    </a>
+    <nav aria-label="Main navigation">
+      <ul class="flex flex-wrap items-center justify-end gap-x-5 gap-y-2 text-sm">
+        {
+          navItems.map((item) => (
+            <li>
+              <a href={item.href} class="text-muted hover:text-accent">
+                {item.label}
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </nav>
+  </div>
+</header>

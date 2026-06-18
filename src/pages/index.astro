@@ -1,0 +1,106 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/Header.astro';
+import Hero from '../components/Hero.astro';
+import Section from '../components/Section.astro';
+import PublicationCard from '../components/PublicationCard.astro';
+import Footer from '../components/Footer.astro';
+import {
+  contact,
+  education,
+  experience,
+  profile,
+  publications,
+  research,
+} from '../data/site';
+---
+
+<BaseLayout>
+  <Header />
+  <main>
+    <Hero />
+
+    <Section id="research" title="Research">
+      <div class="space-y-5 leading-relaxed text-foreground/90">
+        {research.statement.map((paragraph) => <p>{paragraph}</p>)}
+      </div>
+
+      <div class="mt-10">
+        <h3 class="mb-4 text-lg font-semibold text-foreground">Research interests</h3>
+        <ul class="flex flex-wrap gap-2">
+          {
+            research.interests.map((interest) => (
+              <li class="rounded-full border border-border bg-white px-3 py-1.5 text-sm text-muted">
+                {interest}
+              </li>
+            ))
+          }
+        </ul>
+      </div>
+
+      <div class="mt-10">
+        <h3 class="mb-4 text-lg font-semibold text-foreground">Technical focus</h3>
+        <ul class="flex flex-wrap gap-2">
+          {
+            research.skills.map((skill) => (
+              <li class="rounded-full bg-accent/10 px-3 py-1.5 text-sm font-medium text-accent">
+                {skill}
+              </li>
+            ))
+          }
+        </ul>
+      </div>
+    </Section>
+
+    <Section id="publications" title="Publications" wide>
+      <div class="grid gap-6 md:grid-cols-2">
+        {publications.map((publication) => <PublicationCard publication={publication} />)}
+      </div>
+    </Section>
+
+    <Section id="education" title="Education">
+      <div class="space-y-8">
+        {
+          education.map((entry) => (
+            <article>
+              <div class="mb-1 flex flex-wrap items-baseline justify-between gap-2">
+                <h3 class="text-xl font-semibold text-foreground">{entry.degree}</h3>
+                <span class="text-sm text-muted">{entry.period}</span>
+              </div>
+              <p class="mb-2 font-medium text-accent">{entry.institution}</p>
+              {entry.details && <p class="leading-relaxed text-muted">{entry.details}</p>}
+            </article>
+          ))
+        }
+      </div>
+    </Section>
+
+    <Section id="experience" title="Experience">
+      <div class="space-y-8">
+        {
+          experience.map((entry) => (
+            <article>
+              <div class="mb-1 flex flex-wrap items-baseline justify-between gap-2">
+                <h3 class="text-xl font-semibold text-foreground">{entry.role}</h3>
+                <span class="text-sm text-muted">{entry.period}</span>
+              </div>
+              <p class="mb-2 font-medium text-accent">{entry.organization}</p>
+              <p class="leading-relaxed text-muted">{entry.description}</p>
+            </article>
+          ))
+        }
+      </div>
+    </Section>
+
+    <Section id="contact" title="Contact">
+      <p class="mb-6 leading-relaxed text-muted">{contact.message}</p>
+      <a
+        href={`mailto:${profile.email}`}
+        class="inline-flex items-center rounded-md border border-accent px-5 py-3 text-sm font-medium text-accent no-underline hover:bg-accent hover:text-white"
+      >
+        {profile.email}
+      </a>
+    </Section>
+  </main>
+  <Footer />
+</BaseLayout>

@@ -1,0 +1,39 @@
+---
+import { profile } from '../data/site';
+---
+
+<section class="border-b border-border">
+  <div class="mx-auto max-w-prose px-6 py-16 md:py-20">
+    <p class="mb-3 text-sm font-medium uppercase tracking-[0.18em] text-accent">
+      {profile.title}
+    </p>
+    <h1 class="mb-4 text-4xl font-semibold leading-tight text-foreground md:text-5xl">
+      {profile.name}
+    </h1>
+    <p class="mb-2 text-lg text-muted">{profile.affiliation}</p>
+    <p class="mb-8 text-xl leading-relaxed text-foreground/90">{profile.tagline}</p>
+
+    <div class="mb-8 flex flex-wrap gap-3">
+      {
+        profile.links.map((link) => (
+          <a
+            href={link.href}
+            class="rounded-full border border-border px-4 py-2 text-sm font-medium text-accent no-underline hover:border-accent hover:bg-white"
+            target={link.href.startsWith('http') ? '_blank' : undefined}
+            rel={link.href.startsWith('http') ? 'noopener noreferrer' : undefined}
+          >
+            {link.label}
+          </a>
+        ))
+      }
+    </div>
+
+    <a
+      href={profile.cvPath}
+      download
+      class="inline-flex items-center rounded-md bg-accent px-5 py-3 text-sm font-medium text-white no-underline hover:bg-foreground"
+    >
+      Download CV
+    </a>
+  </div>
+</section>
