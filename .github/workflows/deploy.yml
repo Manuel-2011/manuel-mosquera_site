@@ -26,9 +26,22 @@ jobs:
         with:
           node-version: 20
           cache: npm
+          cache-dependency-path: package-lock.json
 
       - name: Install dependencies
-        run: npm ci
+        run: |
+          npm config set fetch-retries 5
+          npm config set fetch-retry-mintimeout 20000
+          npm config set fetch-retry-maxtimeout 120000
+          for attempt in 1 2 3; do
+            if npm ci; then
+              exit 0
+            fi
+            echo "npm ci failed on attempt ${attempt}/3. Cleaning and retrying..."
+            rm -rf node_modules
+            sleep $((attempt * 5))
+          done
+          exit 1
 
       - name: Build site
         run: npm run build
